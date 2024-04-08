@@ -18,9 +18,9 @@ def read_data(file_name, field):
     with open("sequential.json", mode="r") as data_file:
         data = json.load(data_file)
     for key in data_keys():
-        if field == key:
-            sequential_data = data[field]
-            return sequential_data
+         if field == key:
+             sequential_data = data[field]
+             return sequential_data
         else:
             return None
 
@@ -46,13 +46,27 @@ def pattern_search(sequence, pattern):
 
     positions = set()
     seq_length = len(sequence)
-    pattern_length = len(patterm)
+    pattern_length = len(pattern)
 
     for i in range(seq_length - pattern_length + 1):
         if sequence[i:i + pattern_length] == pattern:
             positions.add((i + pattern_length)/2)
 
     return positions
+
+
+def binary_search(numbers, target):
+    left, right = 0, len(numbers) - 1
+
+    while left <= right:
+        mid = (left + right)//2
+        if numbers[mid] == target:
+            return mid
+        elif numbers[mid] < target:
+            left = mid + 1
+        else:
+            right = mid - 1
+    return None
 
 
 
